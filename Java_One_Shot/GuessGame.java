@@ -21,6 +21,6 @@ public class GuessGame {
             }
         }while(userNamber != randomNumber);
         sc.close();
+        System.out.println(randomNumber);
     }
-    System.out.println(randomNumber);
 }
