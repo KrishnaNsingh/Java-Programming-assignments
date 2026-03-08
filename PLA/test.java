@@ -1,39 +1,32 @@
 package PLA;
 
-import java.util.HashMap;
+
 
 // import java.util.*;
 public class test {
-    static boolean isStrobogrammatic(String n){
-        HashMap<Character, Character> map = new HashMap<>();
-        map.put('0','0');
-        map.put('1','1');
-        map.put('6','9');
-        map.put('8','8');
-        map.put('9','6');
-        
-        int left = 0;
-        int right = n.length()-1;
-        while(left <= right){
-            char l = n.charAt(left);
-            char r = n.charAt(right);
-
-            if(!map.containsKey(l) || map.get(l) != r){
-                return false;
+    static int CRT(int a[], int m[], int n, int p){
+        int x = 0;
+        for(int i=0; i<n; i++){
+            int M = p/m[i];
+            int y = 0;
+            for(int j=0; j<m[i]; j++){
+                if((M*j) % m[i] == 1){
+                    y = j;
+                    break;
+                }
             }
-
-            left++;
-            right--;
+            x += a[i]*M*y; 
         }
-        return true;
+        return x%p;
     }
-    public static void main(String[] args) {
-        String num = "91";
-
-        if(isStrobogrammatic(num)){
-            System.out.print("Yes number is Strobogrammatic");
-        }else{
-            System.out.print("No number is not Strobogrammatic");
+    public static void main(String[] args){
+        int m[] = {3, 4, 5};
+        int a[] = {2, 3, 1};
+        int prod = 1;
+        int n = m.length;
+        for(int i=0; i<n; i++){
+            prod *= m[i];
         }
+        System.out.println(CRT(a, m, n, prod));
     }
 }
