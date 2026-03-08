@@ -1,27 +1,26 @@
 package PLA;
 
-import java.util.*;
+// import java.util.*;
 public class test {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number : ");
-        int num = sc.nextInt();
-        sc.close();
-        boolean[] bool =  new boolean[num];
-        for(int i=0; i<num; i++){
-            bool[i] = true;
-        }
-        for(int i=2; i<Math.sqrt(num); i++){
-            if(bool[i] == true){
-                for(int j=i*i; j<num; j += i){
-                    bool[j] = false;
+    static int phi(int n){
+        int result = n;
+        for(int i=2; i<Math.sqrt(n); i++){
+            if(n%i == 0){
+                while(n%i==0){
+                    n/=i;
                 }
+                result -= result/i;
+                System.out.println(i); 
             }
         }
-        for(int i=2; i<num; i++){
-            if(bool[i] == true){
-                System.out.println(i);
-            }
+        if(n > 1){
+            result -= result/n; 
+            System.out.println(n); 
         }
+        return result;
+    }
+    public static void main(String[] args){
+        int n = 90;
+        System.out.print(phi(n));
     }
 }
