@@ -2,7 +2,7 @@ package PLA;
 
 // import java.util.Scanner;
 
-class LongestSubarrayWithOnesAfterReplacement {
+class londest_sequnce_of_1 {
     private static int findMaxConsecutiveOnes(int[] a, int k) {
         int maxOnes = Integer.MIN_VALUE;
         int numReplacements = 0;
