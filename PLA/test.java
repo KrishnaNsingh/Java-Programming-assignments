@@ -4,29 +4,28 @@ package PLA;
 
 // import java.util.*;
 public class test {
-    static int CRT(int a[], int m[], int n, int p){
-        int x = 0;
-        for(int i=0; i<n; i++){
-            int M = p/m[i];
-            int y = 0;
-            for(int j=0; j<m[i]; j++){
-                if((M*j) % m[i] == 1){
-                    y = j;
-                    break;
-                }
+    static int longone(int nums[], int k){
+        int left = 0;
+        int zeroCount = 0;
+        int maxLength = 0;
+        for(int right=0; right<nums.length; right++){
+            if(nums[right] == 0){
+                zeroCount++;
             }
-            x += a[i]*M*y; 
+            while(zeroCount > k){
+                if(nums[left] == 0){
+                    zeroCount--;
+                }
+                left++;
+            }
+            maxLength = Math.max(maxLength, right - left + 1);
         }
-        return x%p;
+        return maxLength;
     }
     public static void main(String[] args){
-        int m[] = {3, 4, 5};
-        int a[] = {2, 3, 1};
-        int prod = 1;
-        int n = m.length;
-        for(int i=0; i<n; i++){
-            prod *= m[i];
-        }
-        System.out.println(CRT(a, m, n, prod));
+        int nums[] = {1,1,1,1,0,0,0,1,1,1,1,1,0};
+        int k = 1;
+
+        System.out.print(longone(nums, k));
     }
 }
