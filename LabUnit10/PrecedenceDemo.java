@@ -4,6 +4,7 @@ public class PrecedenceDemo {
     public static void main(String[] args) {
         try {
             int data = 50 / 0;
+            System.out.print(data);
         } 
         // Subclass exception caught first
         catch (ArithmeticException e) {
