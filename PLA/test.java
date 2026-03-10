@@ -4,28 +4,24 @@ package PLA;
 
 // import java.util.*;
 public class test {
-    static int longone(int nums[], int k){
-        int left = 0;
-        int zeroCount = 0;
-        int maxLength = 0;
-        for(int right=0; right<nums.length; right++){
-            if(nums[right] == 0){
-                zeroCount++;
-            }
-            while(zeroCount > k){
-                if(nums[left] == 0){
-                    zeroCount--;
-                }
-                left++;
-            }
-            maxLength = Math.max(maxLength, right - left + 1);
+    static int MaxProduct(int[] arr){
+        int n = arr.length;
+        if(n == 0)return 0;
+        int maxPro = arr[0];
+        int minPro = arr[0];
+        int result = maxPro;
+        for(int i=1; i<n; i++){
+            int curr = arr[i];
+            int tempMax = Math.max(curr , Math.max(maxPro*curr , minPro*curr));
+            minPro = Math.min(curr , Math.min(maxPro*curr , minPro*curr));
+            maxPro = tempMax;
+            result = Math.max(result, maxPro);
         }
-        return maxLength;
+        return result;
     }
-    public static void main(String[] args){
-        int nums[] = {1,1,1,1,0,0,0,1,1,1,1,1,0};
-        int k = 1;
-
-        System.out.print(longone(nums, k));
+    public static void main(String[] args) {
+        int[] arr = {7,4,3,-2,5,2};
+        int maxProduct = MaxProduct(arr);
+        System.out.println("Max Product is :" + maxProduct);
     }
 }
