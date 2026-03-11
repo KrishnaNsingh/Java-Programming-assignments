@@ -4,24 +4,31 @@ package PLA;
 
 // import java.util.*;
 public class test {
-    static int MaxProduct(int[] arr){
+    static int equlibriumPosition(int[] arr){
         int n = arr.length;
-        if(n == 0)return 0;
-        int maxPro = arr[0];
-        int minPro = arr[0];
-        int result = maxPro;
+        int[] preSum = new int[n];
+        int[] suffsum = new int[n];
+
+        preSum[0] = arr[0];
         for(int i=1; i<n; i++){
-            int curr = arr[i];
-            int tempMax = Math.max(curr , Math.max(maxPro*curr , minPro*curr));
-            minPro = Math.min(curr , Math.min(maxPro*curr , minPro*curr));
-            maxPro = tempMax;
-            result = Math.max(result, maxPro);
+            preSum[i] = preSum[i-1] + arr[i];
         }
-        return result;
+
+        suffsum[n-1] = arr[n-1];
+        for(int i=n-2; i>=0; i--){
+            suffsum[i] = suffsum[i+1] + arr[i];
+        }
+
+        for(int i=1; i<n; i++){
+            if(preSum[i-1] == suffsum[i+1]){
+                return i;
+            }
+        }
+        return -1;
     }
     public static void main(String[] args) {
-        int[] arr = {7,4,3,-2,5,2};
-        int maxProduct = MaxProduct(arr);
-        System.out.println("Max Product is :" + maxProduct);
+        int[] arr = { -2, 5, 3, 3, 2, 6, -4, 2 };
+        int result = equlibriumPosition(arr);
+        System.out.println("Equlibrium Position is : "+ result);
     }
 }
