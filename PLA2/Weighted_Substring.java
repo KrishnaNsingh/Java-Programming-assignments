@@ -15,3 +15,5 @@ public class Weighted_Substring {
         System.out.println(WeightedString(s));
     }
 }
+
+// TC = n   SC = 1

@@ -25,3 +25,6 @@ public class moveHyphenToBeginning {
         System.out.println(moveHyphen(s));
     }
 }
+
+
+// TC = n  SC = n
