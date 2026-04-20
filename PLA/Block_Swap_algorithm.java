@@ -2,13 +2,12 @@ package PLA;
 
 public class Block_Swap_algorithm {
     public static void Swap_algorithm(int[] arr, int k, int n){
-        if(n == 0){
-            return ;
-        }
-        if((k % n) > n){
-            return;
-        }
+        if (k == 0 || k == n) return;
+
+        k = k % n;
+
         int[] temp = new int[k];
+        
         for(int i=0; i<k; i++){
             temp[i] = arr[i];
         }
