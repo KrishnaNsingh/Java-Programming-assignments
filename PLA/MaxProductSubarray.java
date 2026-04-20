@@ -63,3 +63,5 @@ public class MaxProductSubarray {
         System.out.println("Maximum Product Subarray = " + answer);
     }
 }
+
+// TC = n , SC = 1
